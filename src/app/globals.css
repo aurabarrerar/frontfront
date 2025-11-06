@@ -1,0 +1,279 @@
+@import "tailwindcss";
+
+/* ===== Variables del tema ===== */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* ===== Modo oscuro ===== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* ===== Estilos base ===== */
+body {
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+  color: #16469B !important; /* Azul institucional como texto base */
+}
+
+/* 🎨 Colores institucionales Universidad de Sonora */
+.text-azul-unison {
+  color: #16469B !important;
+  font-family: "Times New Roman", serif;
+}
+
+.border-azul-unison {
+  border-color: #16469B !important;
+}
+
+.bg-dorado-unison {
+  background-color: #E6B10F !important;
+  color: #16469B;
+}
+
+/* Evita que los encabezados hereden color negro */
+h1, h2, h3, h4, h5, h6 {
+  color: inherit !important;
+}
+
+/* Asegura que los bordes usen el color azul solo donde se requiera explícitamente */
+button,
+input,
+select,
+textarea,
+div,
+section,
+nav {
+  border-color: inherit;
+}
+
+/* ========================================================= */
+/* 📅 Calendario moderno tipo Microsoft (react-datepicker o similar) */
+/* ========================================================= */
+
+/* Contenedor principal del calendario */
+.react-datepicker {
+  background-color: #F2F2F2 !important; /* 🔹 Gris institucional */
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  font-family: "Segoe UI", "Inter", sans-serif !important;
+  color: #16469B !important;
+  width: 100%;
+  max-width: 300px;
+  padding: 0.5rem 0.75rem !important;
+}
+
+/* Encabezado (mes, año y botones de navegación) */
+.react-datepicker__header {
+  position: relative !important;
+  background-color: #F2F2F2 !important;
+  border: none !important;
+  padding: 0.75rem 2rem !important; /* espacio extra para flechas */
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important; /* centra el mes */
+  text-transform: lowercase;
+}
+
+/* Flechas de navegación (alineadas a los costados del mes) */
+.react-datepicker__navigation {
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 1.75rem !important;
+  height: 1.75rem !important;
+}
+
+.react-datepicker__navigation--previous {
+  left: 8px !important;
+}
+
+.react-datepicker__navigation--next {
+  right: 8px !important;
+}
+
+/* Ícono de la flecha */
+.react-datepicker__navigation-icon::before {
+  border-color: #16469B !important;
+  border-width: 2px 2px 0 0 !important;
+  width: 8px !important;
+  height: 8px !important;
+}
+
+/* Quita cualquier fondo al pasar el mouse */
+.react-datepicker__navigation:hover {
+  background: transparent !important;
+}
+
+/* Días de la semana */
+.react-datepicker__day-name {
+  text-transform: lowercase;
+  color: #16469B !important;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+/* Días normales */
+.react-datepicker__day {
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  color: #16469B !important;
+  width: 2rem !important;
+  height: 2rem !important;
+  line-height: 2rem !important;
+  margin: 0.1rem !important;
+  font-size: 14px !important;
+}
+
+/* Día seleccionado */
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  background-color: #16469B !important;
+  color: white !important;
+}
+
+/* Hover sobre día */
+.react-datepicker__day:hover {
+  background-color: rgba(22, 70, 155, 0.15) !important; /* Azul claro */
+}
+
+/* Día actual (hoy) */
+.react-datepicker__day--today {
+  border: 1px solid #16469B !important;
+  font-weight: 600 !important;
+}
+
+/* Quitar triángulo y bordes del popover */
+.react-datepicker__triangle {
+  display: none !important;
+}
+
+.react-datepicker-popper {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Título del mes/año */
+.react-datepicker__current-month {
+  color: #16469B !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  text-transform: capitalize !important; /* Ej: October 2025 */
+}
+
+/* Rectangular sin bordes redondeados */
+.react-datepicker__month-container {
+  border-radius: 0 !important;
+}
+
+/* ========================================================= */
+/* 📅 Calendario moderno tipo Microsoft (flechas debajo del mes) */
+/* ========================================================= */
+
+.react-datepicker {
+  background-color: #F2F2F2 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  font-family: "Segoe UI", "Inter", sans-serif !important;
+  color: #16469B !important;
+  width: 100%;
+  max-width: 300px;
+  padding: 0.5rem 0.75rem !important;
+}
+
+/* Encabezado del calendario */
+.react-datepicker__header {
+  background-color: #F2F2F2 !important;
+  border: none !important;
+  border-bottom: none !important;
+  padding: 0.5rem 0 !important;
+  font-weight: 600 !important;
+  text-align: center !important;
+}
+
+/* Título del mes centrado */
+.react-datepicker__current-month {
+  color: #16469B !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  margin-bottom: 0.25rem !important;
+}
+
+/* Flechas — colocadas debajo del mes, alineadas en los extremos */
+.react-datepicker__navigation {
+  top: 2.2rem !important; /* debajo del mes */
+  width: 2rem !important;
+  height: 2rem !important;
+}
+
+.react-datepicker__navigation--previous {
+  left: 0.5rem !important;
+}
+
+.react-datepicker__navigation--next {
+  right: 0.5rem !important;
+}
+
+.react-datepicker__navigation-icon::before {
+  border-color: #16469B !important;
+  border-width: 2px 2px 0 0 !important;
+  width: 8px !important;
+  height: 8px !important;
+}
+
+.react-datepicker__navigation:hover {
+  background: transparent !important;
+}
+
+/* Días de la semana */
+.react-datepicker__day-name {
+  text-transform: lowercase;
+  color: #16469B !important;
+  font-weight: 500;
+  font-size: 13px;
+  margin-top: 1.5rem !important; /* separa los días del mes y las flechas */
+}
+
+/* Días normales */
+.react-datepicker__day {
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  color: #16469B !important;
+  width: 2rem !important;
+  height: 2rem !important;
+  line-height: 2rem !important;
+  margin: 0.1rem !important;
+  font-size: 14px !important;
+}
+
+/* Día seleccionado */
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  background-color: #16469B !important;
+  color: white !important;
+}
+
+/* Día actual (hoy) */
+.react-datepicker__day--today {
+  border: 1px solid #16469B !important;
+  font-weight: 600 !important;
+}

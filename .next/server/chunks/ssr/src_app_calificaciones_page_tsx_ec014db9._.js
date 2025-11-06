@@ -1,0 +1,3 @@
+module.exports=[39646,a=>{"use strict";a.s(["default",()=>d]);var b=a.i(87924),c=a.i(50944);function d(){return(0,c.useRouter)().push("/calificaciones/consultar-calificaciones"),(0,b.jsx)("div",{className:"min-h-screen bg-gray-50 flex items-center justify-center",children:(0,b.jsx)("p",{className:"text-gray-500",children:"Redirigiendo a Consultar Calificaciones..."})})}}];
+
+//# sourceMappingURL=src_app_calificaciones_page_tsx_ec014db9._.js.map
