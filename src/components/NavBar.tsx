@@ -14,7 +14,7 @@ export default function NavBar({ className, azul, dorado }: Props) {
   const menuItems = [
     { href: "/inicio", label: "Inicio" },
     { href: "#", label: "Calificaciones", disabled: true },
-    { href: "#", label: "Alumnos", disabled: true },
+    { href: "/alumnos", label: "Alumnos" },
     { href: "/reportes", label: "Reportes Académicos" },
     { href: "#", label: "Alertas por Faltas", disabled: true },
   ];
