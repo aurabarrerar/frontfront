@@ -44,7 +44,7 @@ export default function NavBar({ className, azul, dorado }: Props) {
     },
     { href: "#", label: "Alumnos", id: "alumnos", disabled: true },
     { href: "/reportes", label: "Reportes Académicos", id: "reportes" },
-    { href: "#", label: "Alertas por Faltas", id: "alertas", disabled: true },
+    { href: "/Alertas-Faltas", label: "Alertas por Faltas", id: "alertas", disabled: true },
   ];
 
   const handleMenuClick = (id: string, hasDropdown: boolean) => {
