@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -19,8 +23,12 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"],
-      "@lib/*": ["./lib/*"] // 🔹 Alias para /lib
+      "@/*": [
+        "./src/*"
+      ],
+      "@lib/*": [
+        "./lib/*"
+      ] // 🔹 Alias para /lib
     }
   },
   "include": [
@@ -30,6 +38,10 @@
     ".next/types/**/*.ts",
     "src/app/calificaciones/consultar-calificaciones",
     "src/components/**/*" // ✅ agregado para reconocer tus componentes
+    ,
+    ".next/dev/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }
