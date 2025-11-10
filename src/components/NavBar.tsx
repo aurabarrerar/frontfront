@@ -38,7 +38,7 @@ export default function NavBar({ className, azul, dorado }: Props) {
       id: "calificaciones",
       dropdown: [ // El submenú para Calificaciones
         { href: "/calificaciones/subir", label: "Subir calificaciones vía Excel" },
-        { href: "/calificaciones/consultar", label: "Consultar calificaciones" },
+        { href: "/calificaciones/consultar-calificaciones", label: "Consultar calificaciones" },
       ],
       // No disabled: true, para permitir el clic y abrir el dropdown
     },
