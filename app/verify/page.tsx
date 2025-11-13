@@ -47,6 +47,7 @@ export default function VerifyPage() {
             src="logo.png"
             alt="Universidad de Sonora"
             className="h-16 mb-4"
+            object-fit="fill"
           />
           <h1 className="text-2xl font-bold text-gray-800">Verificación de cuenta</h1>
         </div>
