@@ -24,11 +24,8 @@
     ],
     "paths": {
       "@/*": [
-        "./src/*"
-      ],
-      "@lib/*": [
-        "./lib/*"
-      ] // 🔹 Alias para /lib
+        "./app/*"
+      ]
     }
   },
   "include": [
@@ -36,10 +33,10 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/calificaciones/consultar-calificaciones",
-    "src/components/**/*" // ✅ agregado para reconocer tus componentes
-    ,
-    ".next/dev/types/**/*.ts"
+    ".next/dev/types/**/*.ts",
+    "**/*.mts",
+    ".next\\dev/types/**/*.ts",
+    ".next\\dev/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
