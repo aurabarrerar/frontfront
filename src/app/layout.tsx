@@ -1,22 +1,21 @@
-"use client"; // 👈 MANTENER: NECESARIO para usar useState y el componente Link
+"use client"; // 👈 MANTENER: Necesario para usar useState y usePathname
 
 import { useState } from "react";
-import { usePathname } from "next/navigation"; // 👈 🎯 PASO CLAVE 1: Importar usePathname
-import type { Metadata } from "next";
+import { usePathname } from "next/navigation";
 import { Inter, Roboto } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import "./globals.css";
-import NavBar from "../components/NavBar";
+import NavBar from "../components/NavBar"; // Asumo que este componente existe en src/components/NavBar
 
-// ... (definiciones de fuentes y paleta de colores)
-
+// --- Definiciones de fuentes ---
 const inter = Inter({ subsets: ["latin"] });
 const roboto = Roboto({ subsets: ["latin"], weight: ["400", "500"] });
 
+// --- Paleta de colores ---
 const AZUL_MARINO = "#16469B";
 const DORADO = "#E6B10F";
-const FONDO = "#EDE9FF";
+const FONDO = "#EDE9FF"; // Fondo fuera del contenedor principal
 
 export default function RootLayout({
   children,
@@ -24,16 +23,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  // 🎯 PASO CLAVE 2: Obtener la ruta actual
   const pathname = usePathname();
 
-  // 🎯 PASO CLAVE 3: Definir la condición de exclusión
-  const isLoginPage = pathname === '/login'; // Asumiendo que la ruta es /login
-
-  // Si tienes otras rutas que no deben tener NavBar (ej. /registro), puedes usar:
-  // const ROUTES_WITHOUT_NAVBAR = ['/login', '/registro'];
-  // const isLoginPage = ROUTES_WITHOUT_NAVBAR.includes(pathname);
+  // 🎯 CORRECCIÓN: Rutas que NO deben tener el Header/NavBar
+  // Esto incluye la raíz ('/') donde se carga el LoginPage, y la ruta explícita '/login'.
+  const ROUTES_WITHOUT_NAVBAR = ['/', '/login', '/registro', '/recuperar-contrasena'];
+  const shouldRenderNavbar = !ROUTES_WITHOUT_NAVBAR.includes(pathname);
 
 
   return (
@@ -44,7 +39,7 @@ export default function RootLayout({
           className="min-h-screen flex justify-center py-10"
           style={{ backgroundColor: FONDO }}
         >
-          {/* Contenedor principal */}
+          {/* Contenedor principal del contenido (blanco) */}
           <div className="bg-white max-w-[1200px] w-full mx-auto rounded-xl shadow-lg overflow-hidden">
             {/* 🔵 Franja azul superior */}
             <div
@@ -52,16 +47,16 @@ export default function RootLayout({
               className="h-[8px] w-full"
             />
 
-            {/* 🎯 PASO CLAVE 4: Renderizado Condicional del Header y NavBar */}
-            {/* Si NO es la página de login, muestra el header y el NavBar */}
-            {!isLoginPage && (
+            {/* 🎯 RENDERIZADO CONDICIONAL DEL HEADER Y NAVBAR */}
+            {shouldRenderNavbar && (
               <>
-                {/* Header */}
+                {/* Header (Logo, Íconos de Perfil y Notificaciones) */}
                 <header className="bg-white shadow-sm">
                   <div className="max-w-7xl mx-auto px-8 py-6 flex items-center justify-between">
                     {/* Logo + textos */}
                     <div className="flex items-center gap-6">
                       <div className="w-[100px] h-[100px] relative">
+                        {/* Asegúrate de que /logounison.png exista en /public */}
                         <Image
                           src="/logounison.png"
                           alt="Logo Universidad de Sonora"
@@ -92,7 +87,7 @@ export default function RootLayout({
 
                     {/* Íconos (notificaciones / perfil) */}
                     <div className="flex items-center gap-8">
-                      {/* Campana */}
+                      {/* Campana (Notificaciones) */}
                       <button className="p-2 rounded-full hover:bg-gray-100 transition">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -113,9 +108,9 @@ export default function RootLayout({
 
                       {/* 👤 CONTENEDOR DEL BOTÓN DE PERFIL Y MENÚ DESPLEGABLE */}
                       <div className="relative">
-                        {/* Botón de Perfil - Ahora con la acción onClick */}
+                        {/* Botón de Perfil */}
                         <button
-                          onClick={() => setIsMenuOpen(!isMenuOpen)} // 👈 Toggler
+                          onClick={() => setIsMenuOpen(!isMenuOpen)}
                           className={`p-2 rounded-full transition ${isMenuOpen ? "bg-gray-100" : "hover:bg-gray-100"}`}
                         >
                           <svg
@@ -142,7 +137,7 @@ export default function RootLayout({
                           >
                             {/* 1. Botón "Cerrar Sesión" */}
                             <Link
-                              href="/logout" // Ruta de cierre de sesión
+                              href="/logout"
                               className="text-red-600 font-medium hover:underline float-right"
                               onClick={() => setIsMenuOpen(false)}
                             >
@@ -151,9 +146,8 @@ export default function RootLayout({
 
                             {/* 2. Info del Usuario */}
                             <div className="flex items-start mb-3 pt-1">
-                              {/* Ícono de perfil pequeño (simulado) */}
                               <div className="w-10 h-10 bg-[#E6B10F] rounded-full flex items-center justify-center mr-2 mt-1">
-                                {/* Opcional: SVG blanco pequeño */}
+                                {/* Espacio para imagen o iniciales */}
                               </div>
                               <div>
                                 <p className="text-gray-800 font-semibold">
@@ -175,7 +169,7 @@ export default function RootLayout({
                             </p>
 
                             <Link
-                              href="/configuracion-perfil" // Ruta de configuración de perfil
+                              href="/configuracion-perfil"
                               className="block text-gray-700 p-2 rounded hover:bg-gray-100 transition"
                               onClick={() => setIsMenuOpen(false)}
                             >
@@ -184,12 +178,11 @@ export default function RootLayout({
                           </div>
                         )}
                       </div>
-                      {/* FIN DEL CONTENEDOR DEL BOTÓN DE PERFIL */}
                     </div>
                   </div>
                 </header>
 
-                {/* Barra amarilla → se importa el NavBar Client */}
+                {/* Barra amarilla (NavBar) */}
                 <NavBar
                   className={`${roboto.className} text-white h-16 flex items-center shadow-sm font-medium text-[17px]`}
                   azul={AZUL_MARINO}

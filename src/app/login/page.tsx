@@ -225,7 +225,7 @@ const SuccessView = ({ onViewChange }: ViewProps) => {
                     onClick={() => onViewChange('login')}
                     className="bg-yellow-600 hover:bg-yellow-700"
                 >
-                    Iniciar sesión
+                    Iniciaaaaaar sesión
                 </Button>
             </div>
         </>
@@ -234,7 +234,7 @@ const SuccessView = ({ onViewChange }: ViewProps) => {
 
 
 // =================================================================
-// 👑 COMPONENTE PRINCIPAL (LOGIN PAGE)
+// 👑 COMPONENTE PRINCIPAL (LOGIN PAGE) - LÓGICA CORREGIDA
 // =================================================================
 
 export default function LoginPage() {
@@ -255,9 +255,15 @@ export default function LoginPage() {
             return
         }
 
+        // 🚨 CORRECCIÓN CLAVE: Normalización y limpieza de inputs 🚨
+        const trimmedEmail = email.trim().toLowerCase();
+        const trimmedPassword = password.trim();
+        const validEmailLower = VALID_EMAIL.toLowerCase().trim();
+        // -------------------------------------------------------------
+
         // Simulación de autenticación
-        if (email === VALID_EMAIL && password === VALID_PASSWORD) {
-            router.push('/inicio') // Redirección al Home
+        if (trimmedEmail === validEmailLower && trimmedPassword === VALID_PASSWORD) {
+            router.push('/inicio/') // Redirección al Home
         } else {
             // Error de credenciales incorrectas
             setError('Correo o contraseña incorrecta.')

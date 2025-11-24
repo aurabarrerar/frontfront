@@ -23,8 +23,9 @@
       }
     ],
     "paths": {
+      // 🚨 ¡ESTA LÍNEA ES LA SOLUCIÓN! 🚨
       "@/*": [
-        "./app/*"
+        "./src/*"
       ]
     }
   },
